@@ -4,19 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class KnowledgeBase {
 
 	private FactBase bf; // base de faits initiale
 	private RuleBase br; // base de règles
 	private FactBase bfSat; // base de faits saturée - vide initialement
+	public HashSet<Atom> HashBF;
 
 	public KnowledgeBase() {
 		bf = new FactBase();
 		br = new RuleBase();
 		bfSat = new FactBase();
-
+		HashBF = new HashSet<>();
 	}
 
 	public KnowledgeBase(String fic) {
@@ -73,7 +74,6 @@ public class KnowledgeBase {
 
 	public void forwardChainingBasic() {
 		// algo basique de forward chaining
-
 		bfSat = new FactBase(); // ré-initialisation de bfSat
 		bfSat.addAtoms(bf.getAtoms()); // avec les atomes de bf
 		boolean fin = false;
@@ -108,10 +108,44 @@ public class KnowledgeBase {
 	}
 
 	public void forwardChainingOpt() {
-		bfSat = new FactBase();
-		FactBase aTraite = bf.clone();
-		boolean[] compteur = new boolean[br.size()];
+		LinkedList<Atom> aTraiter = new LinkedList<Atom>();
+		HashBF = new HashSet<Atom>();
+		HashMap<Rule,Integer> cptr = new HashMap<Rule,Integer>();
+		HashMap<Atom,List<Rule>> atome2regle = new HashMap<Atom,List<Rule>>();
+
 		for (int i = 0; i < br.size(); i++) {
+			cptr.put(br.getRule(i), br.getRule(i).getHypothesis().size());
+			for(Atom a : br.getRule(i).getHypothesis()) {
+				List<Rule> listeRegles = atome2regle.get(a);
+				if(listeRegles == null) {
+					listeRegles = new ArrayList<Rule>();
+					atome2regle.put(a, listeRegles);
+				}
+				listeRegles.add(br.getRule(i));
+			}
+		}
+
+		for(Atom F : bf.getAtoms()) {
+			aTraiter.addLast(F);
+			HashBF.add(F);
+		}
+
+		while(!aTraiter.isEmpty()) {
+			Atom f = aTraiter.removeFirst();
+			List<Rule> LRf = atome2regle.get(f);
+			if(LRf!=null) {
+				for(Rule r : LRf) {
+					int val = cptr.get(r)-1;
+					cptr.put(r, val);
+					if(val == 0) {
+						Atom c = r.getConclusion();
+						if(!HashBF.contains(c)) {
+							aTraiter.addLast(c);
+							HashBF.add(c);
+						}
+					}
+				}
+			}
 		}
 	}
 
