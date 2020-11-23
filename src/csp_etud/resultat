@@ -1,0 +1,52 @@
+a) imagina
+b)
+
+1.
+
+Nom du réseau: csp1.txt
+searchSol:
+	Première solution trouvée: {x1=1, x2=2, x3=7, x4=8, x5=1}
+	Nombre de noeuds explorés: 7
+	Nombre d'appels à violation: 14
+	Nombre de vérifications de tuples:
+searchAllSol:
+	Nombre de solutions trouvées: 5
+	Nombre de noeuds explorés: 104
+	Toutes les solutions trouvées: [{x1=3, x2=4, x3=2, x4=3, x5=7}, {x1=5, x2=1, x3=6, x4=1, x5=5}, {x1=8, x2=4, x3=2, x4=3, x5=7}, {x1=8, x2=7, x3=8, x4=5, x5=6}, {x1=8, x2=7, x3=8, x4=5, x5=8}]
+
+Nom du réseau: csp2.txt
+searchSol:
+	Première solution trouvée: {x8=4, x0=0, x1=0, x2=0, x3=2, x4=0, x5=1, x6=2, x7=4}
+	Nombre de noeuds explorés: 11
+	Nombre d'appels à violation: 13
+	Nombre de vérifications de tuples:
+searchAllSol:
+	Nombre de solutions trouvées: 6
+	Nombre de noeuds explorés: 89
+	Toutes les solutions trouvées: [{x8=4, x0=1, x1=0, x2=0, x3=2, x4=0, x5=0, x6=1, x7=4}, {x8=4, x0=1, x1=0, x2=0, x3=2, x4=0, x5=0, x6=1, x7=5}, {x8=4, x0=1, x1=0, x2=0, x3=2, x4=1, x5=1, x6=1, x7=4}, {x8=4, x0=1, x1=0, x2=0, x3=2, x4=1, x5=1, x6=1, x7=5}, {x8=4, x0=1, x1=0, x2=0, x3=2, x4=2, x5=2, x6=1, x7=4}, {x8=4, x0=1, x1=0, x2=0, x3=2, x4=2, x5=2, x6=1, x7=5}]
+
+2.
+
+3.
+
+4.
+
+Nom du réseau: 10reines_ext.txt
+searchSol:
+	Première solution trouvée: null
+	Nombre de noeuds explorés: 10
+searchAllSol:
+	Nombre de solutions trouvées: 724
+	Nombre de noeuds explorés: 47419
+
+5.
+
+
+
+6.
+
+Nom du réseau: 20reines_ext.txt
+searchSol:
+	Première solution trouvée: {r2=1, r3=3, r4=5, r5=2, r6=4, r7=9, r8=11, r9=13, r10=15, r20=7, r12=20, r11=20, r14=20, r13=20, r16=20, r15=20, r18=8, r17=20, r19=20, r1=12}
+	Nombre de noeuds explorés: 23
+

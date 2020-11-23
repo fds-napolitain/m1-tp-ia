@@ -1,0 +1,147 @@
+10
+r1;1;2;3;4;5;6;7;8;9;10
+r2;1;2;3;4;5;6;7;8;9;10
+r3;1;2;3;4;5;6;7;8;9;10
+r4;1;2;3;4;5;6;7;8;9;10
+r5;1;2;3;4;5;6;7;8;9;10
+r6;1;2;3;4;5;6;7;8;9;10
+r7;1;2;3;4;5;6;7;8;9;10
+r8;1;2;3;4;5;6;7;8;9;10
+r9;1;2;3;4;5;6;7;8;9;10
+r10;1;2;3;4;5;6;7;8;9;10
+45
+exp
+r1;r2
+r1!=r2 && Math.abs(r1-r2)!=1
+exp
+r1;r3
+r1!=r3 && Math.abs(r1-r3)!=2
+exp
+r1;r4
+r1!=r4 && Math.abs(r1-r4)!=3
+exp
+r1;r5
+r1!=r5 && Math.abs(r1-r5)!=4
+exp
+r1;r6
+r1!=r6 && Math.abs(r1-r6)!=5
+exp
+r1;r7
+r1!=r7 && Math.abs(r1-r7)!=6
+exp
+r1;r8
+r1!=r8 && Math.abs(r1-r8)!=7
+exp
+r1;r9
+r1!=r9 && Math.abs(r1-r9)!=8
+exp
+r1;r10
+r1!=r10 && Math.abs(r1-r10)!=9
+exp
+r2;r3
+r2!=r3 && Math.abs(r2-r3)!=1
+exp
+r2;r4
+r2!=r4 && Math.abs(r2-r4)!=2
+exp
+r2;r5
+r2!=r5 && Math.abs(r2-r5)!=3
+exp
+r2;r6
+r2!=r6 && Math.abs(r2-r6)!=4
+exp
+r2;r7
+r2!=r7 && Math.abs(r2-r7)!=5
+exp
+r2;r8
+r2!=r8 && Math.abs(r2-r8)!=6
+exp
+r2;r9
+r2!=r9 && Math.abs(r2-r9)!=7
+exp
+r2;r10
+r2!=r10 && Math.abs(r2-r10)!=8
+exp
+r3;r4
+r3!=r4 && Math.abs(r3-r4)!=1
+exp
+r3;r5
+r3!=r5 && Math.abs(r3-r5)!=2
+exp
+r3;r6
+r3!=r6 && Math.abs(r3-r6)!=3
+exp
+r3;r7
+r3!=r7 && Math.abs(r3-r7)!=4
+exp
+r3;r8
+r3!=r8 && Math.abs(r3-r8)!=5
+exp
+r3;r9
+r3!=r9 && Math.abs(r3-r9)!=6
+exp
+r3;r10
+r3!=r10 && Math.abs(r3-r10)!=7
+exp
+r4;r5
+r4!=r5 && Math.abs(r4-r5)!=1
+exp
+r4;r6
+r4!=r6 && Math.abs(r4-r6)!=2
+exp
+r4;r7
+r4!=r7 && Math.abs(r4-r7)!=3
+exp
+r4;r8
+r4!=r8 && Math.abs(r4-r8)!=4
+exp
+r4;r9
+r4!=r9 && Math.abs(r4-r9)!=5
+exp
+r4;r10
+r4!=r10 && Math.abs(r4-r10)!=6
+exp
+r5;r6
+r5!=r6 && Math.abs(r5-r6)!=1
+exp
+r5;r7
+r5!=r7 && Math.abs(r5-r7)!=2
+exp
+r5;r8
+r5!=r8 && Math.abs(r5-r8)!=3
+exp
+r5;r9
+r5!=r9 && Math.abs(r5-r9)!=4
+exp
+r5;r10
+r5!=r10 && Math.abs(r5-r10)!=5
+exp
+r6;r7
+r6!=r7 && Math.abs(r6-r7)!=1
+exp
+r6;r8
+r6!=r8 && Math.abs(r6-r8)!=2
+exp
+r6;r9
+r6!=r9 && Math.abs(r6-r9)!=3
+exp
+r6;r10
+r6!=r10 && Math.abs(r6-r10)!=4
+exp
+r7;r8
+r7!=r8 && Math.abs(r7-r8)!=1
+exp
+r7;r9
+r7!=r9 && Math.abs(r7-r9)!=2
+exp
+r7;r10
+r7!=r10 && Math.abs(r7-r10)!=3
+exp
+r8;r9
+r8!=r9 && Math.abs(r8-r9)!=1
+exp
+r8;r10
+r8!=r10 && Math.abs(r8-r10)!=2
+exp
+r9;r10
+r9!=r10 && Math.abs(r9-r10)!=1
