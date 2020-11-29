@@ -126,6 +126,10 @@ public class FactBase {
 		return s;
 	}
 
+	public Atom remove(int index) {
+		return atoms.remove(index);
+	}
+
 	public static void main(String args[]) {
 		FactBase bf = new FactBase();
 		Atom a = new Atom("A");

@@ -108,10 +108,36 @@ public class KnowledgeBase {
 	}
 
 	public void forwardChainingOpt() {
-		bfSat = new FactBase();
+		bfSat = bf.clone();
 		FactBase aTraite = bf.clone();
-		boolean[] compteur = new boolean[br.size()];
+		int[] compteur = new int[br.size()];
 		for (int i = 0; i < br.size(); i++) {
+			compteur[i] = br.getRule(i).getHypothesis().size();
+		}
+		while (!aTraite.isEmpty()) {
+			Atom F = aTraite.remove(0);
+			for (int i = 0; i < br.size(); i++) {
+				Rule R = br.getRule(i);
+				if (R.getHypothesis().contains(F)) {
+					compteur[i]--;
+					if (compteur[i] == 0) {
+						if (!aTraite.contains(R.getConclusion())) {
+							aTraite.addAtomWithoutCheck(R.getConclusion());
+							bfSat.addAtomWithoutCheck(R.getConclusion());
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public boolean backwardChaining(Atom Q) {
+		if (bf.contains(Q)) {
+			return true;
+		}
+		for (int i = 0; i < br.size(); i++) {
+			Rule R = br.getRule(i);
+
 		}
 	}
 

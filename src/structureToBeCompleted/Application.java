@@ -5,9 +5,12 @@ import java.io.FileNotFoundException;
 public class Application {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		KnowledgeBase reunion = new KnowledgeBase("reunion.txt");
-		reunion.forwardChainingBasic();
-		System.out.println(reunion.toString());
+		KnowledgeBase fcb = new KnowledgeBase("reunion.txt");
+		fcb.forwardChainingBasic();
+		System.out.println(fcb.toString());
+		KnowledgeBase fco = new KnowledgeBase("reunion.txt");
+		fco.forwardChainingOpt();
+		System.out.println(fco.toString());
 	}
 
 }
