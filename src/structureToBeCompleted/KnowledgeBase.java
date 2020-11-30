@@ -4,21 +4,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class KnowledgeBase {
 
 	private FactBase bf; // base de faits initiale
 	private RuleBase br; // base de règles
 	private FactBase bfSat; // base de faits saturée - vide initialement
+	private HashSet<Atom> HashBF;
 
 	public KnowledgeBase() {
 		bf = new FactBase();
 		br = new RuleBase();
 		bfSat = new FactBase();
-
+		HashBF = new HashSet<>();
 	}
 
 	public KnowledgeBase(String fic) {
@@ -72,10 +71,19 @@ public class KnowledgeBase {
 		return "**********\nBase de connaissances: \n" + bf + br + bfSat + "\n**********";
 	}
 
+	/**
+	 * Retourne une description de la base de connaissances
+	 *
+	 * @return description de la base de connaissances
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString2() {
+		return "**********\nBase de connaissances: \n" + bf + br + HashBF + "\n**********";
+	}
+
 
 	public void forwardChainingBasic() {
 		// algo basique de forward chaining
-
 		bfSat = new FactBase(); // ré-initialisation de bfSat
 		bfSat.addAtoms(bf.getAtoms()); // avec les atomes de bf
 		boolean fin = false;
@@ -110,22 +118,40 @@ public class KnowledgeBase {
 	}
 
 	public void forwardChainingOpt() {
-		bfSat = bf.clone();
-		FactBase aTraite = bf.clone();
-		int[] compteur = new int[br.size()];
+		LinkedList<Atom> aTraiter = new LinkedList<Atom>();
+		HashBF = new HashSet<Atom>();
+		HashMap<Rule,Integer> cptr = new HashMap<Rule,Integer>();
+		HashMap<Atom,List<Rule>> atome2regle = new HashMap<Atom,List<Rule>>();
+
 		for (int i = 0; i < br.size(); i++) {
-			compteur[i] = br.getRule(i).getHypothesis().size();
+			cptr.put(br.getRule(i), br.getRule(i).getHypothesis().size());
+			for(Atom a : br.getRule(i).getHypothesis()) {
+				List<Rule> listeRegles = atome2regle.get(a);
+				if(listeRegles == null) {
+					listeRegles = new ArrayList<Rule>();
+					atome2regle.put(a, listeRegles);
+				}
+				listeRegles.add(br.getRule(i));
+			}
 		}
-		while (!aTraite.isEmpty()) {
-			Atom F = aTraite.remove(0);
-			for (int i = 0; i < br.size(); i++) {
-				Rule R = br.getRule(i);
-				if (R.getHypothesis().contains(F)) {
-					compteur[i]--;
-					if (compteur[i] == 0) {
-						if (!aTraite.contains(R.getConclusion())) {
-							aTraite.addAtomWithoutCheck(R.getConclusion());
-							bfSat.addAtomWithoutCheck(R.getConclusion());
+
+		for(Atom F : bf.getAtoms()) {
+			aTraiter.addLast(F);
+			HashBF.add(F);
+		}
+
+		while(!aTraiter.isEmpty()) {
+			Atom f = aTraiter.removeFirst();
+			List<Rule> LRf = atome2regle.get(f);
+			if(LRf!=null) {
+				for(Rule r : LRf) {
+					int val = cptr.get(r)-1;
+					cptr.put(r, val);
+					if(val == 0) {
+						Atom c = r.getConclusion();
+						if(!HashBF.contains(c)) {
+							aTraiter.addLast(c);
+							HashBF.add(c);
 						}
 					}
 				}
@@ -135,7 +161,7 @@ public class KnowledgeBase {
 
 	public boolean backwardChaining(Atom Q, List<Atom> Lb, int r) {
 		if (r > 0) {
-			System.out.println("---".repeat(r) + " " + Q);
+			System.out.println("-".repeat(r) + " " + Q);
 		} else {
 			System.out.println(Q);
 		}

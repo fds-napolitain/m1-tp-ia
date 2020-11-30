@@ -13,7 +13,7 @@ public class Application {
 
 		KnowledgeBase fco = new KnowledgeBase("reunion.txt");
 		fco.forwardChainingOpt();
-		System.out.println(fco.toString());
+		System.out.println(fco.toString2());
 
 		KnowledgeBase bc = new KnowledgeBase();
 		bc.getBf().addAtomWithoutCheck(new Atom("A"));
