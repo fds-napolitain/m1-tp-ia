@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class KnowledgeBase {
@@ -131,14 +133,35 @@ public class KnowledgeBase {
 		}
 	}
 
-	public boolean backwardChaining(Atom Q) {
+	public boolean backwardChaining(Atom Q, List<Atom> Lb, int r) {
+		if (r > 0) {
+			System.out.println("---".repeat(r) + " " + Q);
+		} else {
+			System.out.println(Q);
+		}
 		if (bf.contains(Q)) {
 			return true;
 		}
-		for (int i = 0; i < br.size(); i++) {
-			Rule R = br.getRule(i);
-
+		for (int k = 0; k < br.size(); k++) {
+			Rule R = br.getRule(k);
+			List<Atom> H = R.getHypothesis();
+			if (Collections.disjoint(H, Lb)) {
+				int i = 0;
+				int n = H.size();
+				Lb.add(Q);
+				while (i < n && backwardChaining(H.get(i), Lb, r+1)) {
+					i++;
+				}
+				if (i == n) {
+					return true;
+				}
+			}
 		}
+		return false;
+	}
+
+	public boolean backwardChainingOpt(Atom Q) {
+		return true;
 	}
 
 }
