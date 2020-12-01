@@ -11,9 +11,9 @@ public class KnowledgeBase {
 	private FactBase bf; // base de faits initiale
 	private RuleBase br; // base de règles
 	private FactBase bfSat; // base de faits saturée - vide initialement
-	private HashSet<Atom> HashBF;
-	private HashSet<Atom> prouve;
-	private HashSet<Atom> echec;
+	public HashSet<Atom> HashBF;
+	public HashSet<Atom> prouve;
+	public HashSet<Atom> echec;
 
 	public KnowledgeBase() {
 		bf = new FactBase();
@@ -122,38 +122,38 @@ public class KnowledgeBase {
 	}
 
 	public void forwardChainingOpt() {
-		LinkedList<Atom> aTraiter = new LinkedList<Atom>();
-		HashBF = new HashSet<Atom>();
-		HashMap<Rule,Integer> cptr = new HashMap<Rule,Integer>();
-		HashMap<Atom,List<Rule>> atome2regle = new HashMap<Atom,List<Rule>>();
+		LinkedList<Atom> aTraiter = new LinkedList<>();
+		HashBF = new HashSet<>();
+		HashMap<Rule,Integer> cptr = new HashMap<>();
+		HashMap<Atom,List<Rule>> atome2regle = new HashMap<>();
 
 		for (int i = 0; i < br.size(); i++) {
 			cptr.put(br.getRule(i), br.getRule(i).getHypothesis().size());
-			for(Atom a : br.getRule(i).getHypothesis()) {
+			for (Atom a : br.getRule(i).getHypothesis()) {
 				List<Rule> listeRegles = atome2regle.get(a);
-				if(listeRegles == null) {
-					listeRegles = new ArrayList<Rule>();
+				if (listeRegles == null) {
+					listeRegles = new ArrayList<>();
 					atome2regle.put(a, listeRegles);
 				}
 				listeRegles.add(br.getRule(i));
 			}
 		}
 
-		for(Atom F : bf.getAtoms()) {
+		for (Atom F : bf.getAtoms()) {
 			aTraiter.addLast(F);
 			HashBF.add(F);
 		}
 
-		while(!aTraiter.isEmpty()) {
+		while (!aTraiter.isEmpty()) {
 			Atom f = aTraiter.removeFirst();
 			List<Rule> LRf = atome2regle.get(f);
-			if(LRf!=null) {
-				for(Rule r : LRf) {
+			if (LRf != null) {
+				for (Rule r : LRf) {
 					int val = cptr.get(r)-1;
 					cptr.put(r, val);
-					if(val == 0) {
+					if (val == 0) {
 						Atom c = r.getConclusion();
-						if(!HashBF.contains(c)) {
+						if (!HashBF.contains(c)) {
 							aTraiter.addLast(c);
 							HashBF.add(c);
 						}

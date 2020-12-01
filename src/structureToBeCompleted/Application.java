@@ -1,22 +1,21 @@
 package structureToBeCompleted;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Application {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		KnowledgeBase fcb = new KnowledgeBase("reunion.txt");
-		fcb.forwardChainingBasic();
-		System.out.println(fcb.toString());
+		// étape 2
+		KnowledgeBase reunion = new KnowledgeBase("reunion.txt");
+		reunion.forwardChainingBasic();
+		System.out.println(reunion.toString());
 
-		KnowledgeBase fco = new KnowledgeBase("reunion.txt");
-		fco.forwardChainingOpt();
-		System.out.println(fco.toString2());
+		// étape 3
+		reunion.forwardChainingOpt();
+		System.out.println(reunion.toString2());
 
+		// étape 4
 		KnowledgeBase bc = new KnowledgeBase();
 		bc.getBf().addAtomWithoutCheck(new Atom("A"));
 		bc.getBf().addAtomWithoutCheck(new Atom("B"));
@@ -31,9 +30,30 @@ public class Application {
 		System.out.println(bc.getBr().toString());
 		System.out.println(bc.backwardChaining(Q, Lb, 0));
 
+		// étape 5
 		System.out.println(bc.getBf().toString());
 		System.out.println(bc.getBr().toString());
 		System.out.println(bc.backwardChainingOpt(Q, Lb, 0));
+
+		// étape 6
+		KnowledgeBase app = new KnowledgeBase("reunion.txt");
+		System.out.println(app.getBf().toString());
+		System.out.println(app.getBr().toString());
+		app.forwardChainingOpt();
+		System.out.println("Base de Faits saturés (" + app.HashBF.size() + "):");
+		for (Atom atom : app.HashBF) {
+			System.out.printf(atom.toString() + " ; ");
+		}
+		System.out.println();
+		Atom X;
+		List<Atom> L;
+		Scanner scanner = new Scanner(System.in);
+		while (true) {
+			X = new Atom(scanner.nextLine());
+			L = new ArrayList<>();
+			System.out.println(app.HashBF.contains(X));
+			System.out.println(app.backwardChainingOpt(X, L, 0));
+		}
 	}
 
 }
