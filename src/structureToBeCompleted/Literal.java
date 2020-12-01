@@ -14,11 +14,11 @@ public class Literal extends Atom {
 		this.signe = signe;
 	}
 
-	@Override
+	/*@Override
 	public boolean equals(Object b) {
 		if (!(b instanceof Literal))
 			return false;
 		return this.symbol.equals(((Literal) b).symbol) &&
 				this.signe == ((Literal) b).signe;
-	}
+	}*/
 }
