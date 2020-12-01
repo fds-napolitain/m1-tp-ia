@@ -102,7 +102,7 @@ public class KnowledgeBase {
 					Rule r = br.getRule(i);
 					// test d'applicabilite de la regle i
 					boolean applicable = true;
-					List<Atom> hp = r.getHypothesis();
+					List<Literal> hp = r.getHypothesis();
 					for (int j = 0; applicable && j < hp.size(); j++)
 						if (!bfSat.contains(r.getAtomHyp(j)))
 							applicable = false;
@@ -175,7 +175,7 @@ public class KnowledgeBase {
 		for (int k = 0; k < br.size(); k++) {
 			Rule R = br.getRule(k);
 			if (R.getConclusion().equals(Q)) {
-				List<Atom> H = R.getHypothesis();
+				List<Literal> H = R.getHypothesis();
 				if (Collections.disjoint(H, Lb)) {
 					int i = 0;
 					int n = H.size();
@@ -214,7 +214,7 @@ public class KnowledgeBase {
 		for (int k = 0; k < br.size(); k++) {
 			Rule R = br.getRule(k);
 			if (R.getConclusion().equals(Q)) {
-				List<Atom> H = R.getHypothesis();
+				List<Literal> H = R.getHypothesis();
 				if (Collections.disjoint(H, Lb)) {
 					int i = 0;
 					int n = H.size();

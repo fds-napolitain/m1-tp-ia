@@ -12,17 +12,13 @@ package structureToBeCompleted;
  */
 
 public class Atom {
-	private String symbol; // le symbole propositionnel
+	public String symbol; // le symbole propositionnel
 
 	/**
 	 * @param s l'atome (
 	 */
 	public Atom(String s) {
 		symbol = s;
-	}
-
-	public Atom clone() {
-		return new Atom(this.symbol);
 	}
 
 	@Override

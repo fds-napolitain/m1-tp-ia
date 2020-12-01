@@ -29,14 +29,6 @@ public class FactBase {
 		createFactBase(factList);
 	}
 
-	public FactBase clone() {
-		FactBase factBase = new FactBase();
-		for (Atom atom : atoms) {
-			factBase.addAtomWithoutCheck(atom.clone());
-		}
-		return factBase;
-	}
-
 	/**
 	 * Remplit la base de faits avec la chaine de caracteres passee en parametres
 	 * 
