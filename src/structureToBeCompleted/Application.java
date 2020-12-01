@@ -2,6 +2,8 @@ package structureToBeCompleted;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Application {
@@ -28,6 +30,10 @@ public class Application {
 		System.out.println(bc.getBf().toString());
 		System.out.println(bc.getBr().toString());
 		System.out.println(bc.backwardChaining(Q, Lb, 0));
+
+		System.out.println(bc.getBf().toString());
+		System.out.println(bc.getBr().toString());
+		System.out.println(bc.backwardChainingOpt(Q, Lb, 0));
 	}
 
 }

@@ -12,12 +12,16 @@ public class KnowledgeBase {
 	private RuleBase br; // base de règles
 	private FactBase bfSat; // base de faits saturée - vide initialement
 	private HashSet<Atom> HashBF;
+	private HashSet<Atom> prouve;
+	private HashSet<Atom> echec;
 
 	public KnowledgeBase() {
 		bf = new FactBase();
 		br = new RuleBase();
 		bfSat = new FactBase();
 		HashBF = new HashSet<>();
+		prouve = new HashSet<>();
+		echec = new HashSet<>();
 	}
 
 	public KnowledgeBase(String fic) {
@@ -165,29 +169,73 @@ public class KnowledgeBase {
 		} else {
 			System.out.println(Q);
 		}
-		if (bf.contains(Q)) {
+		if (bf.getAtoms().contains(Q)) {
 			return true;
 		}
 		for (int k = 0; k < br.size(); k++) {
 			Rule R = br.getRule(k);
-			List<Atom> H = R.getHypothesis();
-			if (Collections.disjoint(H, Lb)) {
-				int i = 0;
-				int n = H.size();
-				Lb.add(Q);
-				while (i < n && backwardChaining(H.get(i), Lb, r+1)) {
-					i++;
-				}
-				if (i == n) {
-					return true;
+			if (R.getConclusion().equals(Q)) {
+				List<Atom> H = R.getHypothesis();
+				if (Collections.disjoint(H, Lb)) {
+					int i = 0;
+					int n = H.size();
+					if (!Lb.contains(Q)) {
+						Lb.add(Q);
+					}
+					while (i < n && backwardChaining(H.get(i), Lb, r+1)) {
+						i++;
+					}
+					if (i >= n) {
+						Lb.remove(Q);
+						System.out.println(Q + " prouvé");
+						return true;
+					}
 				}
 			}
 		}
+		System.out.println(Q + " échec");
 		return false;
 	}
 
-	public boolean backwardChainingOpt(Atom Q) {
-		return true;
+	public boolean backwardChainingOpt(Atom Q, List<Atom> Lb, int r) {
+		if (r > 0) {
+			System.out.println("-".repeat(r) + " " + Q);
+		} else {
+			System.out.println(Q);
+		}
+		if (bf.getAtoms().contains(Q) || prouve.contains(Q)) {
+			System.out.println(Q + " deja prouvé");
+			return true;
+		}
+		if (echec.contains(Q)) {
+			System.out.println(Q + " deja échec");
+			return false;
+		}
+		for (int k = 0; k < br.size(); k++) {
+			Rule R = br.getRule(k);
+			if (R.getConclusion().equals(Q)) {
+				List<Atom> H = R.getHypothesis();
+				if (Collections.disjoint(H, Lb)) {
+					int i = 0;
+					int n = H.size();
+					if (!Lb.contains(Q)) {
+						Lb.add(Q);
+					}
+					while (i < n && backwardChainingOpt(H.get(i), Lb, r+1)) {
+						i++;
+					}
+					if (i >= n) {
+						Lb.remove(Q);
+						prouve.add(Q);
+						System.out.println(Q + " prouvé");
+						return true;
+					}
+				}
+			}
+		}
+		echec.add(Q);
+		System.out.println(Q + " échec");
+		return false;
 	}
 
 }
