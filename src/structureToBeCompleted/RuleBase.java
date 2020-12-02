@@ -65,4 +65,23 @@ public class RuleBase {
 		return s;
 	}
 
+	/**
+	 * retourne si l'ensemble des règles est semi-positif
+	 * @return true|false
+	 */
+	public boolean estSemiPos() {
+		for (Rule rule : rules) {
+			for (Atom atom : rule.getHypothesisNegative()) {
+				for (Rule R : rules) {
+					if (R.getConclusion().equals(atom)) {
+						System.out.println("L'ensemble de règles n'est pas semi positif");
+						return false;
+					}
+				}
+			}
+		}
+		System.out.println("L'ensemble de règles est semi positif");
+		return true;
+	}
+
 }

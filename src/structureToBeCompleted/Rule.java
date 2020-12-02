@@ -1,13 +1,12 @@
 package structureToBeCompleted;
 
-import com.sun.source.tree.LiteralTree;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class Rule {
-	private List<Literal> hypothesis;// l'hypothese : une liste d'atomes (H+)
+	private List<Atom> hypothesis;// l'hypothese : une liste d'atomes (H+)
+	private List<Atom> hypothesisNegative; // atom négatif
 	private Atom conclusion;// la conclusion : un atome
 
 	/**
@@ -17,29 +16,24 @@ public class Rule {
 	 *                "atome1;atome2;...atomek", ou les (k-1) premiers atomes
 	 *                forment l'hypothese, et le dernier forme la conclusion
 	 */
-	public Rule(String strRule) {
-		hypothesis = new ArrayList<>();
-		StringTokenizer st = new StringTokenizer(strRule, ";");
-		while (st.hasMoreTokens()) {
-			String s = st.nextToken(); // s represente un atome
-			Literal a = new Literal(s, Signe.POSITIF);
-			hypothesis.add(a);// ajout de a a la liste des atomes de l'hypothese (pour l'instant, on ajoute
-								// aussi celui de la conclusion)
 
-		}
-		// on a mis tous les atomes crees en hypothese
-		// il reste a tranferer le dernier en conclusion
-		conclusion = hypothesis.get(hypothesis.size() - 1);
-		hypothesis.remove(hypothesis.size() - 1);
-	}
 
 	/**
 	 * accesseur a l'hypothese de la regle
 	 * 
 	 * @return l'hypothese de la regle
 	 */
-	public List<Literal> getHypothesis() {
+	public List<Atom> getHypothesis() {
 		return hypothesis;
+	}
+
+	/**
+	 * accesseur a l'hypothese de la regle
+	 *
+	 * @return l'hypothese de la regle
+	 */
+	public List<Atom> getHypothesisNegative() {
+		return hypothesisNegative;
 	}
 
 	/**
@@ -48,7 +42,7 @@ public class Rule {
 	 * @param i le rang de l'atome a retourner (debut a 0)
 	 * @return le ieme atome de l'hypothese
 	 */
-	public Literal getAtomHyp(int i) {
+	public Atom getAtomHyp(int i) {
 		return hypothesis.get(i);
 	}
 

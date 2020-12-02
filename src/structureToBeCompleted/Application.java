@@ -36,7 +36,7 @@ public class Application {
 		System.out.println(bc.backwardChainingOpt(Q, Lb, 0));
 
 		// étape 6
-		KnowledgeBase app = new KnowledgeBase("reunion.txt");
+		/*KnowledgeBase app = new KnowledgeBase("reunion.txt");
 		System.out.println(app.getBf().toString());
 		System.out.println(app.getBr().toString());
 		app.forwardChainingOpt();
@@ -53,7 +53,17 @@ public class Application {
 			L = new ArrayList<>();
 			System.out.println(app.HashBF.contains(X));
 			System.out.println(app.backwardChainingOpt(X, L, 0));
-		}
+		}*/
+
+		// étape 7
+		RuleBase pasSemiPositif = new RuleBase();
+		pasSemiPositif.addRule(new Rule("-a;b;c"));
+		pasSemiPositif.addRule(new Rule("c;d;a"));
+		RuleBase semiPositif = new RuleBase();
+		semiPositif.addRule(new Rule("-a;b;c"));
+		semiPositif.addRule(new Rule("c;d;e"));
+		System.out.println(pasSemiPositif.estSemiPos());
+		System.out.println(semiPositif.estSemiPos());
 	}
 
 }
