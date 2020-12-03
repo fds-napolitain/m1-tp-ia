@@ -74,13 +74,11 @@ public class RuleBase {
 			for (Atom atom : rule.getHypothesisNegative()) {
 				for (Rule R : rules) {
 					if (R.getConclusion().equals(atom)) {
-						System.out.println("L'ensemble de règles n'est pas semi positif");
 						return false;
 					}
 				}
 			}
 		}
-		System.out.println("L'ensemble de règles est semi positif");
 		return true;
 	}
 

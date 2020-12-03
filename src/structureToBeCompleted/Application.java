@@ -62,7 +62,7 @@ public class Application {
 		RuleBase semiPositif = new RuleBase();
 		semiPositif.addRule(new Rule("-a;b;c"));
 		semiPositif.addRule(new Rule("c;d;e"));
-		System.out.println(pasSemiPositif.estSemiPos());
+		System.out.println("\n" + pasSemiPositif.estSemiPos());
 		System.out.println(semiPositif.estSemiPos());
 	}
 

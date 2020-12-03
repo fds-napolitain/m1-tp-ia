@@ -122,6 +122,10 @@ public class KnowledgeBase {
 	}
 
 	public void forwardChainingOpt() {
+		if (br.estSemiPos() == false) {
+			System.err.println("L'ensemble de règles n'est pas semi positif.");
+			System.exit(1);
+		}
 		LinkedList<Atom> aTraiter = new LinkedList<>();
 		HashBF = new HashSet<>();
 		HashMap<Rule,Integer> cptr = new HashMap<>();
