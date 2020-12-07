@@ -1,0 +1,300 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\info
+{\author mugnier marie-laure}
+{\*\company Universite montpellier 2}}\paperw11900\paperh16840\margl1021\margr1021\margb851\margt851\vieww19320\viewh17140\viewkind1\viewscale150
+\deftab709
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f0\b\fs28 \cf0 Evaluation TP2 Intelligence artificielle \'96 HMIN107\
+\pard\pardeftab709\ri-6\sb120\partightenfactor0
+
+\f1\b0\fs24 \cf0 NOM\'a0: Boucher Maxime\
+\pard\pardeftab709\ri-6\partightenfactor0
+\cf0 Parcours\'a0: M1 IMAGINA\
+Encadrant de TP\'a0: M. Leclere\
+\pard\pardeftab709\ri-6\sa283\partightenfactor0
+
+\fs12 \cf0 \
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f0\b\fs28 \cf0 Cha\'eenage avant\
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\fs24 \cf0 \
+1) DemoFC1 
+\f1\b0 sur 
+\f0\b tp2ex1.txt\
+
+\f2\b0\fs22 \
+Nombre d'\'e9tapes de largeur: 6\
+**********\
+Base de connaissances: \
+Base de Faits (3):\
+A ; B ; C\
+Base de Regles (12):\
+	 Regle 1 : J ; H --> I\
+	 Regle 2 : A ; J ; G --> L\
+	 Regle 3 : B ; G --> L\
+	 Regle 4 : I ; F --> H\
+	 Regle 5 : E ; J --> K\
+	 Regle 6 : A ; E --> K\
+	 Regle 7 : C ; F --> H\
+	 Regle 8 : A ; G --> J\
+	 Regle 9 : H ; K --> D\
+	 Regle 10 : A ; B --> G\
+	 Regle 11 : I ; H --> J\
+	 Regle 12 : B ; L ; J --> F\
+Base de Faits (9):\
+A ; B ; C ; G ; L ; J ; F ; H ; I\
+	\
+
+\f0\b\fs24 2) DemoFC1 
+\f1\b0 sur 
+\f0\b tp2ex2.txt
+\f1\b0 \
+
+\f2\fs22 \
+Nombre d'\'e9tapes de largeur: 11\
+**********\
+**********\
+Base de connaissances: \
+Base de Faits (2):\
+a0 ; a1\
+Base de Regles (15):\
+	 Regle 1 : a9 ; a10 --> a11\
+	 Regle 2 : a8 ; a9 --> a10\
+	 Regle 3 : a7 ; a8 --> a9\
+	 Regle 4 : a6 ; a7 --> a8\
+	 Regle 5 : a5 ; a6 --> a7\
+	 Regle 6 : a4 ; a5 --> a6\
+	 Regle 7 : a3 ; a12 --> a5\
+	 Regle 8 : a4 ; a12 --> a5\
+	 Regle 9 : a3 ; a4 --> a5\
+	 Regle 10 : a12 --> a4\
+	 Regle 11 : a2 ; a3 --> a4\
+	 Regle 12 : a1 ; a2 --> a3\
+	 Regle 13 : a0 ; a4 --> a2\
+	 Regle 14 : a0 ; a1 --> a2\
+	 Regle 15 : a13 --> a12\
+Base de Faits (12):\
+a0 ; a1 ; a2 ; a3 ; a4 ; a5 ; a6 ; a7 ; a8 ; a9 ; a10 ; a11\
+	\
+
+\f0\b\fs24 3) DemoFC2
+\f1\b0  sur
+\f0\b  tp2ex1.txt
+\f1\b0 \
+
+\f2\fs22 \
+cptr r=H ; K --> D i=1\
+cptr r=A ; B --> G i=0\
+cptr r=A ; G --> J i=0\
+cptr r=B ; G --> L i=0\
+cptr r=E ; J --> K i=1\
+cptr r=C ; F --> H i=0\
+cptr r=B ; L ; J --> F i=0\
+cptr r=A ; E --> K i=1\
+cptr r=J ; H --> I i=0\
+cptr r=I ; H --> J i=0\
+cptr r=A ; J ; G --> L i=0\
+cptr r=I ; F --> H i=0\
+**********\
+Base de connaissances: \
+Base de Faits (3):\
+A ; B ; C\
+Base de Regles (12):\
+	 Regle 1 : J ; H --> I\
+	 Regle 2 : A ; J ; G --> L\
+	 Regle 3 : B ; G --> L\
+	 Regle 4 : I ; F --> H\
+	 Regle 5 : E ; J --> K\
+	 Regle 6 : A ; E --> K\
+	 Regle 7 : C ; F --> H\
+	 Regle 8 : A ; G --> J\
+	 Regle 9 : H ; K --> D\
+	 Regle 10 : A ; B --> G\
+	 Regle 11 : I ; H --> J\
+	 Regle 12 : B ; L ; J --> F\
+BF* = [A, B, C, F, G, H, I, J, L]\
+**********\
+	\
+
+\f0\b\fs24 4) DemoFC2 
+\f1\b0 sur
+\f0\b  tp2ex2.txt
+\f1\b0 \
+
+\f2\fs22 \
+cptr r=a8 ; a9 --> a10 i=0\
+cptr r=a5 ; a6 --> a7 i=0\
+cptr r=a12 --> a4 i=1\
+cptr r=a3 ; a12 --> a5 i=1\
+cptr r=a6 ; a7 --> a8 i=0\
+cptr r=a9 ; a10 --> a11 i=0\
+cptr r=a2 ; a3 --> a4 i=0\
+cptr r=a1 ; a2 --> a3 i=0\
+cptr r=a13 --> a12 i=1\
+cptr r=a0 ; a1 --> a2 i=0\
+cptr r=a4 ; a5 --> a6 i=0\
+cptr r=a3 ; a4 --> a5 i=0\
+cptr r=a7 ; a8 --> a9 i=0\
+cptr r=a4 ; a12 --> a5 i=1\
+cptr r=a0 ; a4 --> a2 i=0\
+**********\
+Base de connaissances: \
+Base de Faits (2):\
+a0 ; a1\
+Base de Regles (15):\
+	 Regle 1 : a9 ; a10 --> a11\
+	 Regle 2 : a8 ; a9 --> a10\
+	 Regle 3 : a7 ; a8 --> a9\
+	 Regle 4 : a6 ; a7 --> a8\
+	 Regle 5 : a5 ; a6 --> a7\
+	 Regle 6 : a4 ; a5 --> a6\
+	 Regle 7 : a3 ; a12 --> a5\
+	 Regle 8 : a4 ; a12 --> a5\
+	 Regle 9 : a3 ; a4 --> a5\
+	 Regle 10 : a12 --> a4\
+	 Regle 11 : a2 ; a3 --> a4\
+	 Regle 12 : a1 ; a2 --> a3\
+	 Regle 13 : a0 ; a4 --> a2\
+	 Regle 14 : a0 ; a1 --> a2\
+	 Regle 15 : a13 --> a12\
+BF* = [a1, a11, a2, a10, a3, a4, a5, a6, a7, a8, a9, a0]\
+\
+
+\f0\b\fs24 5) Structures de donn\'e9es
+\f1\b0  pour l\'92algorithme \'e0 base de compteurs\
+\
+
+\fs22 - Pour g\'e9rer les compteurs j\'92utilise un HashMap (dictionnaire \'e0 temps d\'92acc\'e8s moyen O(1) \'e0 partir d\'92une cl\'e9\
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\fs24 \cf0 - Pour g\'e9rer ATraiter j\'92utilise une structure linkedList (liste doublement chaine) efficace pour les ajouts, suppression en d\'e9but et fin de liste\
+- 1) Pour traiter efficacement on utilise une HashMap<Atom, List<Rule>> pour savoir quel r\'e8gles on peut trouver avec un atome donn\'e9.\
+  2) Pour savoir si une conclusion C \'80 BF, on utilise un HashSet qui fonctionne comme une HashMap mais en tant que stockage plut\'f4t que dictionnaire (\'e9l\'e9ments unique). HashBF.contains(C) retourne en temps O(1) en g\'e9n\'e9ral si C fait partie de la base de faits.\
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f0\b\fs28 \cf0 \
+Cha\'eenage arri\'e8re\
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\fs24 \cf0 \
+6) DemoBC
+\f1\b0  sur 
+\f0\b tp2ex2.txt 
+\f1\b0 (prouver 
+\f0\b\fs22 a12, a2, a4, a5
+\f1\b0\fs24 )\
+
+\f2\fs22 \
+a12\
+- a13\
+a13 \'e9chec\
+a12 \'e9chec\
+false\
+\
+a2\
+- a0\
+a0 deja prouv\'e9\
+- a4\
+a4 \'e9chec\
+- a0\
+a0 deja prouv\'e9\
+- a1\
+a1 deja prouv\'e9\
+a2 prouv\'e9\
+true\
+\
+a4\
+a4 deja \'e9chec\
+false\
+\
+a5\
+- a3\
+-- a1\
+a1 deja prouv\'e9\
+-- a2\
+a2 deja prouv\'e9\
+a3 prouv\'e9\
+- a4\
+a4 deja \'e9chec\
+a5 \'e9chec\
+false\
+\
+
+\f0\b\fs24 7) Structures de donn\'e9es
+\f1\b0  pour le cha\'eenage arri\'e8re\
+\
+
+\f2\fs22 - Ma base de r\'e8gle est une RuleBase avec List<Rule> donc.\
+- bf.getAtoms().contains(Q) travaille sur une List<Atom>\
+- Lb est une List<Atom>\
+- prouve et \'e9chec sont tous deux des HashSet<Atom>
+\f1\fs24 \
+\
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f0\b\fs28 \cf0 Ensemble de r\'e8gle semi-positif \
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f1\b0\fs24 \cf0 \
+\pard\pardeftab709\ri-6\partightenfactor0
+
+\f0\b \cf0 8) DemoSP
+\f1\b0  sur 
+\f0\b sempos1.txt
+\f1\b0 \
+
+\f2\fs22 \
+cptr r=a --> c i=0\
+cptr r=a --> d i=0\
+**********\
+Base de connaissances: \
+Base de Faits (1):\
+a\
+Base de Regles (2):\
+	 Regle 1 : a --> c\
+	 Regle 2 : a --> d\
+BF* = [a, c, d]\
+**********\
+\
+
+\f0\b\fs24 9) DemoSP
+\f1\b0  sur 
+\f0\b sempos2.txt
+\f2\b0\fs22 \
+\
+cptr r=g --> h i=0\
+cptr r=b ; f --> g i=0\
+cptr r=a ; b --> f i=0\
+cptr r=a --> d i=0\
+**********\
+Base de connaissances: \
+Base de Faits (2):\
+a ; b\
+Base de Regles (4):\
+	 Regle 1 : a --> d\
+	 Regle 2 : g --> h\
+	 Regle 3 : a ; b --> f\
+	 Regle 4 : b ; f --> g\
+BF* = [a, b, d, f, g, h]\
+**********
+\f0\b\fs24 \
+\
+10) Cas limite
+\f1\b0 \
+
+\f2\fs22 \
+L\'92ensemble n\'92est pas semi positif donc il y a System.err.println() et exit(1)\
+\
+
+\f0\b\fs24 11) Extensions optionnelles
+\f1\b0 \
+
+\f2\fs22 \
+expliquer}
