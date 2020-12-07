@@ -95,8 +95,10 @@ public class KnowledgeBase {
 		for (int i = 0; i < br.size(); i++) {
 			Appliquee[i] = false;
 		}
+		int iteration = 0;
 		while (!fin) {
 			FactBase newFacts = new FactBase();
+			iteration++;
 			for (int i = 0; i < br.size(); i++) {
 				if (!Appliquee[i]) {
 					Rule r = br.getRule(i);
@@ -119,6 +121,7 @@ public class KnowledgeBase {
 			else
 				bfSat.addAtoms(newFacts.getAtoms());
 		}
+		System.out.println("Nombre d'étapes de largeur: " + iteration);
 	}
 
 	public void forwardChainingOpt() {
@@ -160,6 +163,9 @@ public class KnowledgeBase {
 					}
 				}
 			}
+		}
+		for (Rule rule : cptr.keySet()) {
+			System.out.println("cptr r=" + rule.toString() + " i=" + cptr.get(rule).toString());
 		}
 	}
 
